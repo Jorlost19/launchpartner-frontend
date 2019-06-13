@@ -20,9 +20,10 @@ const EditProfileDialog = props => {
     const {form, handleChange, resetForm} = useForm({
         name                 : '',
         email                : '',
+        description          : '',
         password             : '',
         passwordConfirm      : '',
-        avatar: ''
+        avatar               : ''
     });
 
     const isFormValid = () =>
@@ -30,6 +31,7 @@ const EditProfileDialog = props => {
         return (
             form.email.length &&
             form.password.length > 3 &&
+            form.description.split(' ').length > 2 &&
             form.password === form.passwordConfirm &&
             form.avatar.length
         );
@@ -78,6 +80,20 @@ const EditProfileDialog = props => {
                   required
                   fullWidth
               />
+
+              <TextField
+                  style={{marginBottom: 12}}
+                  label="Tell us a bit about yourself"
+                  autoFocus
+                  type="description"
+                  name="description"
+                  value={form.description}
+                  onChange={handleChange}
+                  variant="outlined"
+                  required
+                  fullWidth
+                  helperText="Must contain at least 3 words"
+                />
 
               <TextField
                   className={classes.textField}

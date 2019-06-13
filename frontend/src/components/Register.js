@@ -23,10 +23,11 @@ const Register = props =>
     const {form, handleChange, resetForm} = useForm({
         name                 : '',
         email                : '',
+        description          : '',
         password             : '',
         passwordConfirm      : '',
         acceptTermsConditions: false,
-        avatar: ''
+        avatar               : ''
     });
 
     const isFormValid = () =>
@@ -34,6 +35,7 @@ const Register = props =>
         return (
             form.email.length &&
             form.password.length > 3 &&
+            form.description.split(' ').length > 2 &&
             form.password === form.passwordConfirm &&
             form.avatar &&
             form.acceptTermsConditions 
@@ -96,6 +98,20 @@ const Register = props =>
                                     variant="outlined"
                                     required
                                     fullWidth
+                                />
+
+                                <TextField
+                                    style={{marginBottom: 12}}
+                                    label="Tell us a bit about yourself"
+                                    autoFocus
+                                    type="description"
+                                    name="description"
+                                    value={form.description}
+                                    onChange={handleChange}
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    helperText="Must contain at least 3 words"
                                 />
 
                                 <TextField
