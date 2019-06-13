@@ -1,23 +1,27 @@
 import React from 'react';
-import NavBar from './NavBar';
 import EditProfileDialog from './EditProfileDialog';
+import UserCard from './UserCard';
 
-const Dashboard = () => 
+const styles = {
+    width: '90%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: 40,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+}
+
+const Dashboard = props => 
 {
-    const [openDialog, setOpenDialog] = React.useState(false);
-
-  function handleDialogOpen() {
-    setOpenDialog(true);
-  }
-
-  function handleDialogClose() {
-    setOpenDialog(false);
-  }
+    
 
     return (
         <>
-            <EditProfileDialog open={openDialog} handleDialogClose={handleDialogClose} />
-            <NavBar handleDialogOpen={handleDialogOpen} />
+            <EditProfileDialog open={props.openDialog} handleDialogClose={props.handleDialogClose} />
+            <div style={styles}>
+                <UserCard dashboard handleDialogOpen={props.handleDialogOpen} />
+            </div>           
         </>
     )
 }

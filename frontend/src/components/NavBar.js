@@ -31,8 +31,8 @@ const useStyles = makeStyles(theme => ({
   },
   bigAvatar: {
     margin: 10,
-    width: 60,
-    height: 60,
+    width: 40,
+    height: 40,
     cursor: 'pointer'
   },
   sectionMobile: {

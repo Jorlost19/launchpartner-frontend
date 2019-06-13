@@ -62,7 +62,7 @@ const Register = props =>
 
                         <CardContent className="flex flex-col items-center justify-center p-32">
 
-                            <img className="w-128 m-32" src={logo} alt="logo"/>
+                            <img style={{height: 70, width: 70}} src={logo} alt="logo"/>
 
                             <Typography variant="h6" className="mt-16 mb-32">CREATE AN ACCOUNT</Typography>
 
@@ -74,7 +74,7 @@ const Register = props =>
                             >
 
                                 <TextField
-                                    className="mb-16"
+                                    style={{marginBottom: 12}}
                                     label="Name"
                                     autoFocus
                                     type="name"
@@ -87,7 +87,7 @@ const Register = props =>
                                 />
 
                                 <TextField
-                                    className="mb-16"
+                                    style={{marginBottom: 12}}
                                     label="Email"
                                     type="email"
                                     name="email"
@@ -99,7 +99,7 @@ const Register = props =>
                                 />
 
                                 <TextField
-                                    className="mb-16"
+                                    style={{marginBottom: 12}}
                                     label="Password"
                                     type="password"
                                     name="password"
@@ -111,7 +111,7 @@ const Register = props =>
                                 />
 
                                 <TextField
-                                    className="mb-16"
+                                    style={{marginBottom: 12}}
                                     label="Password (Confirm)"
                                     type="password"
                                     name="passwordConfirm"
@@ -123,7 +123,7 @@ const Register = props =>
                                 />
 
                                 <TextField
-                                    className="mb-16"
+                                    style={{marginBottom: 12}}
                                     type="file"
                                     name="avatar"
                                     value={form.avatar}
