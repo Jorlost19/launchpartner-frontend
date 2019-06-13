@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Card, CardContent, Checkbox, FormControl, FormControlLabel, TextField, Typography } from '@material-ui/core';
-import {darken} from '@material-ui/core/styles/colorManipulator';
+import { darken } from '@material-ui/core/styles/colorManipulator';
 import { makeStyles } from '@material-ui/styles';
 import Animate from './Animate';
 import useForm from '../helpers/useForm';
@@ -25,17 +25,18 @@ const Register = props =>
         email                : '',
         password             : '',
         passwordConfirm      : '',
-        acceptTermsConditions: false
+        acceptTermsConditions: false,
+        avatar: ''
     });
 
     const isFormValid = () =>
     {
         return (
-            form.email.length > 0 &&
-            form.password.length > 0 &&
+            form.email.length &&
             form.password.length > 3 &&
             form.password === form.passwordConfirm &&
-            form.acceptTermsConditions
+            form.avatar &&
+            form.acceptTermsConditions 
         );
     }
 
@@ -47,7 +48,7 @@ const Register = props =>
 
     const onButtonClick = () =>
     {
-        props.history.push('/dashboard')
+        props.history.push('/dashboard');
     }
 
     return (
@@ -121,6 +122,18 @@ const Register = props =>
                                     fullWidth
                                 />
 
+                                <TextField
+                                    className="mb-16"
+                                    type="file"
+                                    name="avatar"
+                                    value={form.avatar}
+                                    onChange={handleChange}
+                                    variant="outlined"
+                                    required
+                                    fullWidth
+                                    helperText="Please upload your profile image"
+                                />
+
                                 <FormControl className="items-center">
                                     <FormControlLabel
                                         control={
@@ -134,6 +147,7 @@ const Register = props =>
                                 </FormControl>
 
                                 <Button
+                                    style={{margin: '0 auto'}}
                                     onClick={onButtonClick}
                                     variant="contained"
                                     color="primary"

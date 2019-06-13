@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import Register from './Register';
-import {StylesProvider, createGenerateClassName} from '@material-ui/styles';
+import Dashboard from './Dashboard'
 
 function App() {
   return (
-    <StylesProvider generateClassName={createGenerateClassName()}>
-        <h1>Launch Partner</h1>
+    <>
         <Route path='/' exact component={Register} />
-    </StylesProvider>
+        <Route path='/dashboard' component={Dashboard} />
+    </>
   )
 }
 
