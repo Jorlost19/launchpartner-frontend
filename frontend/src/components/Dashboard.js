@@ -2,13 +2,12 @@ import React from 'react';
 import NavBar from './NavBar';
 import EditProfileDialog from './EditProfileDialog';
 
-const Dashboard = props => 
+const Dashboard = () => 
 {
     const [openDialog, setOpenDialog] = React.useState(false);
 
   function handleDialogOpen() {
     setOpenDialog(true);
-    console.log('opendialog fired',openDialog)
   }
 
   function handleDialogClose() {
