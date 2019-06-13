@@ -26,12 +26,14 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     margin: 10,
     width: 10,
-    height: 10
+    height: 10,
+    cursor: 'pointer'
   },
   bigAvatar: {
     margin: 10,
     width: 60,
     height: 60,
+    cursor: 'pointer'
   },
   sectionMobile: {
     display: 'flex',

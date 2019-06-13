@@ -151,7 +151,6 @@ const Register = props =>
                                     onClick={onButtonClick}
                                     variant="contained"
                                     color="primary"
-                                    className="w-224 mx-auto mt-16"
                                     aria-label="Register"
                                     disabled={!isFormValid()}
                                     type="submit"
