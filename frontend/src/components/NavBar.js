@@ -51,8 +51,8 @@ const NavBar = props => {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  function handleProfileMenuOpen(event) {
-    setAnchorEl(event.currentTarget);
+  function handleProfileMenuOpen(e) {
+    setAnchorEl(e.currentTarget);
   }
 
   function handleMobileMenuClose() {
@@ -69,7 +69,7 @@ const NavBar = props => {
   }
 
   const onProfileClick = () => {
-      handleMenuClose();
+    //   handleMenuClose();
       props.handleDialogOpen();
   }
 

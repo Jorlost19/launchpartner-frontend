@@ -1,6 +1,6 @@
 import React from 'react';
 import EditProfileDialog from './EditProfileDialog';
-import UserCard from './UserCard';
+import UserProfile from './UserProfile';
 
 const styles = {
     width: '90%',
@@ -20,7 +20,7 @@ const Dashboard = props =>
         <>
             <EditProfileDialog open={props.openDialog} handleDialogClose={props.handleDialogClose} />
             <div style={styles}>
-                <UserCard dashboard handleDialogOpen={props.handleDialogOpen} />
+                <UserProfile handleDialogOpen={props.handleDialogOpen} />
             </div>           
         </>
     )
