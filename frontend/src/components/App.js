@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import Register from './Register';
 import Dashboard from './Dashboard';
@@ -6,8 +6,14 @@ import NavBar from './NavBar';
 import UsersList from './UsersList';
 import Login from './Login';
 
-function App() {
+const App = props => {
   const [openDialog, setOpenDialog] = React.useState(false);
+
+  useEffect(() => {
+    if(!localStorage.getItem('token')) {
+      props.history.push('/login')
+    }
+  },[])
 
   function handleDialogOpen() {
     setOpenDialog(true);

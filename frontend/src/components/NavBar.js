@@ -78,6 +78,11 @@ const NavBar = props => {
     props.handleDialogOpen();
   }
 
+  const logOut = () => {
+      handleMenuClose();
+      localStorage.clear()
+  }
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -90,7 +95,7 @@ const NavBar = props => {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={onProfileClick}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Sign Out</MenuItem>
+      <MenuItem onClick={logOut}>Sign Out</MenuItem>
     </Menu>
   );
 

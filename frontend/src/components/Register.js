@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { Button, Card, CardContent, Checkbox, FormControl, FormControlLabel, TextField, Typography } from '@material-ui/core';
 import { darken } from '@material-ui/core/styles/colorManipulator';
 import { makeStyles } from '@material-ui/styles';
@@ -7,8 +7,11 @@ import useForm from '../helpers/useForm';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import logo from '../assets/react-logo.png';
+import axios from 'axios';
+// import UserContext from '../context/UserContext';
 
 const useStyles = makeStyles(theme => ({
+    
     root: {
         background: 'radial-gradient(' + darken(theme.palette.primary.dark, 0.5) + ' 0%, ' + theme.palette.primary.dark + ' 80%)',
         color     : theme.palette.primary.contrastText
@@ -17,7 +20,8 @@ const useStyles = makeStyles(theme => ({
 
 const Register = props =>
 {
-
+    // const context = useContext(UserContext);
+    const [selectedFile, setSelectedFile] = useState({})
     const classes = useStyles();
 
     const {form, handleChange, resetForm} = useForm({
@@ -37,20 +41,42 @@ const Register = props =>
             form.password.length > 3 &&
             form.description.split(' ').length > 2 &&
             form.password === form.passwordConfirm &&
-            form.avatar &&
             form.acceptTermsConditions 
         );
     }
 
-    const handleSubmit = (ev) =>
+    const fileUploadHandler = () => 
     {
-        ev.preventDefault();
+        const fd = new FormData();
+        fd.append('image', selectedFile, selectedFile.name);
+        axios.post('http://localhost:7000/upload', fd)
+            .then(res => axios.post('http://localhost:7000/users/register', {...form, avatar_id: res.data.file.id})
+                                .then(res => {
+                                    localStorage.setItem('token', res.data.token);
+                                    localStorage.setItem('user', JSON.stringify(res.data.user))
+                                })
+                                )
+            .catch(err => console.error(err))
+    }
+
+    const handleSubmit = e =>
+    {
+        e.preventDefault();
         resetForm();
+    }
+
+    const handleFileChange = e => 
+    {
+        setSelectedFile(e.target.files[0]);
+        console.log(e.target.files[0]);
     }
 
     const onButtonClick = () =>
     {
-        props.history.push('/dashboard');
+        fileUploadHandler();
+        if(localStorage.getItem('token')) {
+            props.history.push('/dashboard');
+        }
     }
 
     return (
@@ -141,9 +167,9 @@ const Register = props =>
                                 <TextField
                                     style={{marginBottom: 12}}
                                     type="file"
-                                    name="avatar"
+                                    name="image"
                                     value={form.avatar}
-                                    onChange={handleChange}
+                                    onChange={handleFileChange}
                                     variant="outlined"
                                     required
                                     fullWidth
@@ -169,7 +195,7 @@ const Register = props =>
                                     color="primary"
                                     aria-label="Register"
                                     disabled={!isFormValid()}
-                                    type="submit"
+                                    type="button"
                                 >
                                     CREATE AN ACCOUNT
                                 </Button>

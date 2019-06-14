@@ -7,6 +7,7 @@ import useForm from '../helpers/useForm';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import logo from '../assets/react-logo.png';
+import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -41,7 +42,15 @@ const Login = props =>
 
     const onButtonClick = () =>
     {
-        props.history.push('/dashboard');
+        axios.post('http://localhost:7000/users/login', form)
+            .then(res => {
+                localStorage.setItem('token', res.data.token);
+                localStorage.setItem('user', JSON.stringify(res.data.user))
+            })
+            .catch(err => console.error(err))
+            if(localStorage.getItem('token')) {
+                props.history.push('/dashboard');
+            }
     }
 
     return (
@@ -97,7 +106,7 @@ const Login = props =>
                                     color="primary"
                                     aria-label="Login"
                                     disabled={!isFormValid()}
-                                    type="submit"
+                                    type="button"
                                 >
                                     Log In
                                 </Button>

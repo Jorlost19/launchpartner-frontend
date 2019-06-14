@@ -43,6 +43,11 @@ const EditProfileDialog = props => {
         resetForm();
     }
 
+    const onButtonClick = () => 
+    {
+      props.handleDialogClose();
+    }
+
   return (
     <div>
       <Dialog open={open} onClose={props.handleDialogClose} aria-labelledby="form-dialog-title">
@@ -132,13 +137,13 @@ const EditProfileDialog = props => {
               />
 
               <Button
-                  onClick={props.handleDialogClose}
+                  onClick={onButtonClick}
                   variant="contained"
                   color="primary"
                   className="w-224 mx-auto mt-16"
                   aria-label="Register"
                   disabled={!isFormValid()}
-                  type="submit"
+                  type="button"
               >
                   SUBMIT CHANGES
               </Button>
