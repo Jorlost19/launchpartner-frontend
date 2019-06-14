@@ -49,8 +49,8 @@ const Register = props =>
     {
         const fd = new FormData();
         fd.append('image', selectedFile, selectedFile.name);
-        axios.post('http://localhost:7000/upload', fd)
-            .then(res => axios.post('http://localhost:7000/users/register', {...form, avatar_id: res.data.file.id})
+        axios.post('https://launchpartner.herokuapp.com/upload', fd)
+            .then(res => axios.post('https://launchpartner.herokuapp.com/users/register', {...form, avatar_id: res.data.file.id})
                                 .then(res => {
                                     localStorage.setItem('token', res.data.token);
                                     localStorage.setItem('user', JSON.stringify(res.data.user))
