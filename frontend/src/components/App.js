@@ -4,6 +4,7 @@ import Register from './Register';
 import Dashboard from './Dashboard';
 import NavBar from './NavBar';
 import UsersList from './UsersList';
+import Login from './Login';
 
 function App() {
   const [openDialog, setOpenDialog] = React.useState(false);
@@ -28,6 +29,7 @@ function App() {
               />} 
         />
         <Route path='/users' component={UsersList} />
+        <Route path='/login' component={Login} />
     </>
   )
 }

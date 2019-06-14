@@ -178,7 +178,7 @@ const Register = props =>
 
                             <div className="flex flex-col items-center justify-center pt-32 pb-24">
                                 <span className="font-medium">Already have an account?</span>
-                                <Link className="font-medium" to="/pages/auth/login">Login</Link>
+                                <Link className="font-medium" to="/login">Login</Link>
                             </div>
 
                         </CardContent>
