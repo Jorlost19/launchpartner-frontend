@@ -9,11 +9,11 @@ import Login from './Login';
 const App = props => {
   const [openDialog, setOpenDialog] = React.useState(false);
 
-  useEffect(() => {
-    if(!localStorage.getItem('token')) {
-      props.history.push('/login')
-    }
-  },[])
+  // useEffect(() => {
+  //   if(!localStorage.getItem('token')) {
+  //     props.history.push('/login')
+  //   }
+  // },[props])
 
   function handleDialogOpen() {
     setOpenDialog(true);
