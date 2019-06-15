@@ -5,6 +5,7 @@ import Dashboard from './Dashboard';
 import NavBar from './NavBar';
 import UsersList from './UsersList';
 import Login from './Login';
+import PrivateRoute from './PrivateRoute';
 
 const App = props => {
   const [openDialog, setOpenDialog] = React.useState(false);
@@ -26,7 +27,7 @@ const App = props => {
     <>
         <NavBar handleDialogOpen={handleDialogOpen} />
         <Route path='/' exact component={Register} />
-        <Route 
+        <PrivateRoute 
           path='/dashboard' 
           render={props =><Dashboard {...props} 
               openDialog={openDialog}  
@@ -34,7 +35,7 @@ const App = props => {
               handleDialogOpen={handleDialogOpen}
               />} 
         />
-        <Route path='/users' component={UsersList} />
+        <PrivateRoute path='/users' component={UsersList} />
         <Route path='/login' component={Login} />
     </>
   )
