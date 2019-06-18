@@ -16,7 +16,7 @@ const UserProfile = props => {
           component="img"
           alt={props.name}
           height="140"
-          image={props.avatar || ''}
+          image={'http://localhost:7000/image/5d031b15d22a5c7b97fb1525'}
           title="User Avatar"
         />
         <CardContent>

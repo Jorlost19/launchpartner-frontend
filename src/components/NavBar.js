@@ -120,7 +120,7 @@ const NavBar = props => {
         >
           <Avatar 
           alt="Remy Sharp" 
-          src="/static/images/avatar/1.jpg" 
+          src={`data:image/jpeg;base64,${'http://localhost:7000/image/5d031b15d22a5c7b97fb1525'}`}
           className={classes.avatar} 
           />
         </IconButton>
